@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semana de la Juventud 2025 - Cronograma</title>
+    <link rel="icon" type="image/x-icon" href="favicon_juventud.ico">
+
+    <link rel="preload" as="video" href="intro_juventud.mp4">
+    <link rel="preload" as="video" href="logo_juventud.mp4">
+    <link rel="preload" as="script" href="script.js">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css" />
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="welcome-banner" style="display: none;">
+        <div class="banner-content">
+            <h1>¡Bienvenido!</h1>
+            <p>Para una mejor experiencia, permítenos acceder a tu ubicación y mostrarte los eventos más cercanos.</p>
+            <button id="get-location-btn">Ver eventos cerca de mí</button>
+            <button id="skip-location-btn">Omitir</button>
+        </div>
+    </div>
+
+    <div id="loader-container">
+        <button id="skip-video-btn">X</button>
+        <video id="intro-video" src="intro_juventud.mp4" autoplay muted playsinline></video>
+    </div>
+
+    <div class="main-container" style="display: none;">
+        <video id="header-video" src="logo_juventud.mp4" autoplay loop muted playsinline></video>
+
+        <div class="map-controls">
+            <button id="theme-toggle-btn">Cambiar a Mapa Oscuro</button>
+        </div>
+
+        <p class="map-description">
+            ¡Disfruta de la <strong>Semana de la Juventud 2025</strong>!<br>
+            Conoce todas las actividades y participa.<br>
+            Selecciona una fecha y descubre la programación.
+        </p>
+
+        <div class="date-filter-container-wrapper">
+            <button id="scroll-left-btn" class="scroll-btn">‹</button>
+            <div class="date-filter-container" id="date-filter-container">
+                <div id="date-cards-wrapper">
+                </div>
+            </div>
+            <button id="scroll-right-btn" class="scroll-btn">›</button>
+        </div>
+
+        <div class="pre-map-image-container">
+        </div>
+
+        <div id="mapa"></div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js"></script>
+
+    <script src="script.js" defer></script>
+
+</body>
+</html>
