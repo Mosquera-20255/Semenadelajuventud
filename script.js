@@ -19,9 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // 2. Datos y Coordenadas
     const defaultCoords = [4.704936, -74.230412]; // Coordenadas de Mosquera
 
-    // ⚠️ ==================================================================
-    // ⚠️ CRONOGRAMA Y EVENTOS ACTUALIZADOS (RUTAS CORREGIDAS)
-    // ⚠️ ==================================================================
+    // ... (DATOS DEL CRONOGRAMA - preMapImages y eventsData - van aquí)
     const preMapImages = {
         '2025-11-11': ['martes-11-nov.jpg'],
         '2025-11-12': ['miercoles-12-nov.jpg'],
@@ -36,97 +34,121 @@ document.addEventListener('DOMContentLoaded', function () {
         { 
             lat: 4.7049, lng: -74.2298, location: 'Parque de Mosquera', 
             name: 'Noche de Poderes', time: '6:00 p.m. a 9:00 p.m.', 
-            date: '2025-11-11', category: 'cultura', img: 'icono_concierto.png' // RUTA ACTUALIZADA
+            date: '2025-11-11', category: 'cultura', img: 'icono_concierto.png'
         },
-
         // Miércoles, 12 de noviembre
         { 
             lat: 4.7105, lng: -74.2258, location: 'Auditorio Municipal', 
             name: '"Capitan Eco-impacto" (Cine Foro Ambiental)', time: '8:00 a.m. a 11:00 a.m.', 
-            date: '2025-11-12', category: 'cultura', img: 'icono_cine.png' // RUTA ACTUALIZADA
+            date: '2025-11-12', category: 'cultura', img: 'icono_cine.png'
         },
         { 
             lat: 4.7125, lng: -74.2215, location: 'Ecoplaza', 
             name: '"Capitán Misión Futuro" (Feria de empleo y practicas Juveniles)', time: '12:00 m. a 5:00 p.m.', 
-            date: '2025-11-12', category: 'cultura', img: 'icono_empleo.png' // RUTA ACTUALIZADA
+            date: '2025-11-12', category: 'cultura', img: 'icono_empleo.png'
         },
         { 
             lat: 4.6833, lng: -74.2571, location: 'Los Puentes', 
             name: '"La Pluma de Superman" (Taller de literatura)', time: '7:00 p.m. a 9:00 p.m.', 
-            date: '2025-11-12', category: 'cultura', img: 'icono_literatura.png' // RUTA ACTUALIZADA
+            date: '2025-11-12', category: 'cultura', img: 'icono_literatura.png'
         },
         { 
             lat: 4.7095, lng: -74.2335, location: 'La Salle, Tenco (SENA Aprox.)', 
             name: '"Escuadrón Campus" (Talleres para jóvenes universitarios de nocturna)', time: '7:00 p.m. a 9:00 p.m.', 
-            date: '2025-11-12', category: 'cultura', img: 'icono_educacion.png' // RUTA ACTUALIZADA
+            date: '2025-11-12', category: 'cultura', img: 'icono_educacion.png'
         },
-
         // Jueves, 13 de noviembre
         { 
             lat: 4.6905, lng: -74.2747, location: 'Laguna de la Herrera', 
             name: 'Guardianes del Planeta (Siembra de árboles)', time: '8:00 a.m. a 11:00 a.m.', 
-            date: '2025-11-13', category: 'cultura', img: 'icono_eco.png' // RUTA ACTUALIZADA
+            date: '2025-11-13', category: 'cultura', img: 'icono_eco.png'
         },
         { 
             lat: 4.7062, lng: -74.2305, location: 'Barrio Orinzo', 
             name: 'El Color del Cambio: El héroe que pinta los sueños (Mural)', time: '9:00 a.m. a 10:30 a.m.', 
-            date: '2025-11-13', category: 'cultura', img: 'icono_arte.png' // RUTA ACTUALIZADA
+            date: '2025-11-13', category: 'cultura', img: 'icono_arte.png'
         },
         { 
             lat: 4.7049, lng: -74.2298, location: 'Salón de Alcaldes (Alcaldía)', 
             name: 'Guardianes Holográficos (Taller de Hologramas)', time: '2:00 p.m. a 3:00 p.m.', 
-            date: '2025-11-13', category: 'cultura', img: 'icono_tech.png' // RUTA ACTUALIZADA
+            date: '2025-11-13', category: 'cultura', img: 'icono_tech.png'
         },
         { 
             lat: 4.6930, lng: -74.1735, location: 'Centro Cultural de Oriente', 
             name: '"La Pluma de Superman" (Obra - Candida Erendidira)', time: '4:00 p.m.', 
-            date: '2025-11-13', category: 'cultura', img: 'icono_teatro.png' // RUTA ACTUALIZADA
+            date: '2025-11-13', category: 'cultura', img: 'icono_teatro.png'
         },
         { 
             lat: 4.7035, lng: -74.2325, location: 'Skate Park (Punto de inicio)', 
             name: 'Héroes Sobre Ruedas: La Ciudad es Nuestra Pista (Rodada nocturna)', time: '7:00 p.m. a 9:00 p.m.', 
-            date: '2025-11-13', category: 'deporte', img: 'icono_bici.png' // RUTA ACTUALIZADA
+            date: '2025-11-13', category: 'deporte', img: 'icono_bici.png'
         },
-
         // Viernes, 14 de noviembre
         { 
             lat: 4.7049, lng: -74.2298, location: 'Lugar por definir (Mostrando Parque)', 
             name: 'Misión Juventud: Operación Sabana (Encuentro de Consejeros de Juventud)', time: '8:00 a.m. a 12:00 m.', 
-            date: '2025-11-14', category: 'cultura', img: 'icono_educacion.png' // RUTA ACTUALIZADA
+            date: '2025-11-14', category: 'cultura', img: 'icono_educacion.png'
         },
         { 
             lat: 4.7038, lng: -74.2319, location: 'Coliseo Lucio Amortegui', 
             name: '"Fuerza Juvenil: Súper Remate" (Torneo de Voleibol Piso Mixto)', time: '6:00 p.m. a 10:00 p.m.', 
-            date: '2025-11-14', category: 'deporte', img: 'icono_deporte.png' // RUTA ACTUALIZADA
+            date: '2025-11-14', category: 'deporte', img: 'icono_deporte.png'
         },
         { 
             lat: 4.7129, lng: -74.2286, location: 'La Cumbre', 
             name: '"Fuerza Juvenil: Flash gol" (Torneo de Futsal Femenino)', time: '6:00 p.m. a 10:00 p.m.', 
-            date: '2025-11-14', category: 'deporte', img: 'icono_deporte.png' // RUTA ACTUALIZADA
+            date: '2025-11-14', category: 'deporte', img: 'icono_deporte.png'
         },
         { 
             lat: 4.7260, lng: -74.2282, location: 'Ciudad Sabana', 
             name: '"Fuerza Juvenil: Flash gol" (Torneo de Futsal Masculino)', time: '6:00 p.m. a 10:00 p.m.', 
-            date: '2025-11-14', category: 'deporte', img: 'icono_deporte.png' // RUTA ACTUALIZADA
+            date: '2025-11-14', category: 'deporte', img: 'icono_deporte.png'
         },
-
         // Sábado, 15 de noviembre
         { 
             lat: 4.7147, lng: -74.2181, location: 'Lote Zapatoca de Mosquera', 
             name: 'MEGA FEST ESPACIO CHILL (Stands, Moda, Concierto y más)', time: '11:00 a.m. a 11:00 p.m.', 
-            date: '2025-11-15', category: 'cultura', img: 'icono_concierto.png' // RUTA ACTUALIZADA
+            date: '2025-11-15', category: 'cultura', img: 'icono_concierto.png'
         },
-
         // Domingo, 16 de noviembre
         { 
             lat: 4.7086, lng: -74.2236, location: 'Parque del Trébol', 
             name: '"Súper huella: Guardianes de 4 patas" (Carrera PetFriendly)', time: '8:00 a.m. a 11:00 a.m.', 
-            date: '2025-11-16', category: 'deporte', img: 'icono_pet.png' // RUTA ACTUALIZADA
+            date: '2025-11-16', category: 'deporte', img: 'icono_pet.png'
         }
     ];
-    // ⚠️ ==================================================================
-    // ⚠️ FIN DE LA SECCIÓN DE DATOS
-    // ⚠️ ==================================================================
+
+    // ==================================================================
+    // ⬇️ NUEVA FUNCIÓN DE PRECARGA ⬇️
+    // ==================================================================
+    /**
+     * Precarga dinámicamente las imágenes del cronograma y los íconos del mapa.
+     * Esto se ejecuta en segundo plano mientras el video de intro se reproduce.
+     */
+    function preloadDataImages() {
+        console.log("Iniciando precarga de imágenes dinámicas...");
+        // 1. Obtener todas las imágenes de preMapImages
+        // .flat() convierte [[img1], [img2]] en [img1, img2]
+        const dailyImages = Object.values(preMapImages).flat(); 
+
+        // 2. Obtener todos los íconos únicos de eventsData
+        // new Set() asegura que solo carguemos cada ícono una vez
+        const markerIcons = [...new Set(eventsData.map(event => event.img))];
+
+        // 3. Combinar ambas listas
+        const allImagesToPreload = [...dailyImages, ...markerIcons];
+
+        // 4. Crear un objeto Image() para cada una, forzando la descarga y caché
+        allImagesToPreload.forEach(url => {
+            if (url) { // Evita errores si alguna URL está vacía
+                const img = new Image();
+                img.src = url;
+            }
+        });
+    }
+    // ==================================================================
+    // ⬆️ FIN DE LA NUEVA FUNCIÓN ⬆️
+    // ==================================================================
 
 
     let mapInstance;
@@ -155,7 +177,6 @@ document.addEventListener('DOMContentLoaded', function () {
         if (imagesForDate && imagesForDate.length > 0) {
             imagesForDate.forEach(imageName => {
                 const newImage = document.createElement('img');
-                // RUTA ACTUALIZADA - Se quitó 'img/'
                 newImage.src = imageName; 
                 newImage.alt = "Cronograma del Evento";
                 newImage.className = 'pre-map-image';
@@ -175,7 +196,6 @@ document.addEventListener('DOMContentLoaded', function () {
         card.className = 'date-card';
         card.dataset.date = dateString;
         
-        // RUTA ACTUALIZADA - Se quitó 'img/'
         card.innerHTML = `
             <img src="FECHA.png" alt="Icono de fecha"> 
             <p class="date-day">${date.toLocaleString('es-ES', { weekday: 'short', day: 'numeric', timeZone: 'UTC' })}</p>
@@ -195,7 +215,6 @@ document.addEventListener('DOMContentLoaded', function () {
     function createNavCard(text) {
         const card = document.createElement('div');
         card.className = 'date-card nav-card'; 
-        // RUTA ACTUALIZADA - Se quitó 'img/'
         card.innerHTML = `
             <img src="FECHA.png" alt="Icono de navegación">
             <p class="date-day" style="margin-top: 8px;">${text}</p>
@@ -310,7 +329,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function mostrarMarcadores(eventosAgrupados) {
         Object.values(eventosAgrupados).forEach(group => {
-            // RUTA ACTUALIZADA - 'group.img' ya no tiene prefijo 'img/'
             const icon = L.divIcon({ 
                 className: 'marker-wrapper', 
                 html: `<img src="${group.img}" style="width: 75px; height: auto;">`, 
@@ -451,6 +469,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // --- Ejecución e Inicialización ---
+
+    // ⬇️ SE LLAMA A LA NUEVA FUNCIÓN DE PRECARGA AQUÍ ⬇️
+    preloadDataImages();
 
     introVideo.addEventListener('ended', irAlBannerDeUbicacion);
     introVideo.addEventListener('error', irAlBannerDeUbicacion);
