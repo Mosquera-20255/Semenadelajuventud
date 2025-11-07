@@ -2,652 +2,333 @@
 :root {
     --color-fondo-claro: #FDFB98;
     --color-fondo-oscuro: #FEEA3B;     /* Amarillo Solar */
-    --color-contenedor: #FAF7E8;       /* Crema (en lugar de Blanco) */
+    --color-contenedor: #FAF7E8;       /* Crema */
     --color-acento-principal: #98C93C; /* Verde Lima */
     --color-acento-sombra: #5B8E27;    /* Verde Oscuro */
     --color-acento-detalle: #3C91C9;   /* Azul Acero */
     --color-texto-oscuro: #333333;     /* Texto principal */
-    --color-texto-claro: #FFFFFF;      /* Texto sobre fondos verdes/azules (Blanco Puro) */
-    --color-texto-secundario: #5B8E27; /* Verde oscuro para textos secundarios */
+    --color-texto-claro: #FFFFFF;      /* Blanco Puro */
+    --color-texto-secundario: #5B8E27; /* Verde oscuro */
 }
 
 body {
-    font-family: 'Arial Black', Gadget, sans-serif; /* Fuente más gruesa, estilo cómic */
-    
-    /* --- Fondo Estilo Cómic --- */
+    font-family: 'Arial Black', Gadget, sans-serif;
     background-color: var(--color-fondo-oscuro);
-    background-image: 
-        /* 1. Líneas de acción (Speed Lines) - sutiles */
+    background-image:
         repeating-conic-gradient(from 45deg, rgba(255,255,255,0.3) 0% 1.5%, transparent 2% 7%),
-        /* 2. Trama de puntos (Halftone) */
         radial-gradient(rgba(0,0,0,0.05) 15%, transparent 16%),
-        /* 3. Gradiente radial principal */
         radial-gradient(circle at center, var(--color-fondo-claro) 0%, var(--color-fondo-oscuro) 70%);
-    background-size: 
-        cover,          /* Speed lines */
-        10px 10px,      /* Halftone dots */
-        cover;          /* Radial gradient */
-    
+    background-size: cover, 10px 10px, cover;
     color: var(--color-texto-oscuro);
     margin: 0;
     padding: 0;
     overflow-x: hidden;
-    overflow-y: auto; /* Permitir scroll vertical */
+    overflow-y: auto;
 }
 
 /* --- ANIMACIONES --- */
 @keyframes border-chase {
-    to {
-        transform: rotate(360deg);
-    }
+    to { transform: rotate(360deg); }
 }
 
 @keyframes pulse-shadow {
-    0% {
-        /* Sombra Verde Lima (152, 201, 60) */
-        box-shadow: 0 0 15px rgba(152, 201, 60, 0.4);
-    }
-    50% {
-        box-shadow: 0 0 30px rgba(152, 201, 60, 0.8);
-    }
-    100% {
-        box-shadow: 0 0 15px rgba(152, 201, 60, 0.4);
-    }
+    0% { box-shadow: 0 0 15px rgba(152, 201, 60, 0.4); }
+    50% { box-shadow: 0 0 30px rgba(152, 201, 60, 0.8); }
+    100% { box-shadow: 0 0 15px rgba(152, 201, 60, 0.4); }
 }
 
-/* --- ESTILOS DEL BANNER DE BIENVENIDA --- */
+/* --- BANNER DE BIENVENIDA --- */
 #welcome-banner {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top: 0; left: 0; width: 100%; height: 100%;
     background-color: rgba(0, 0, 0, 0.8);
     z-index: 10001;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem;
-    box-sizing: border-box;
+    display: flex; justify-content: center; align-items: center;
+    padding: 1rem; box-sizing: border-box;
 }
-
 .banner-content {
-    background-color: var(--color-contenedor); /* Crema */
+    background-color: var(--color-contenedor);
     padding: 2rem 3rem;
     border-radius: 12px;
-    max-width: 500px;
-    width: 90%;
-    box-sizing: border-box;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
-    border: none;
+    max-width: 500px; width: 90%;
+    box-sizing: border-box; text-align: center;
+    position: relative; overflow: hidden; z-index: 1;
 }
-    .banner-content::before {
-        content: '';
-        position: absolute;
-        z-index: -2;
-        inset: -50%;
-        background: conic-gradient(var(--color-acento-principal), transparent 30%, transparent); /* Verde */
-        animation: border-chase 6s linear infinite;
-    }
-    .banner-content::after {
-        content: '';
-        position: absolute;
-        z-index: -1;
-        inset: 4px;
-        background: var(--color-contenedor); /* Crema */
-        border-radius: 8px;
-    }
-    .banner-content h1,
-    .banner-content p,
-    .banner-content button {
-        position: relative;
-        z-index: 2;
-    }
-    .banner-content h1 {
-        color: var(--color-acento-principal); /* Verde */
-        margin-top: 0;
-        text-shadow: 2px 2px 0 var(--color-acento-sombra); /* Sombra cómic */
-    }
-    .banner-content button {
-        padding: 12px 24px;
-        font-size: 1rem;
-        font-weight: bold;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: all 0.1s ease;
-        margin: 0.5rem;
-        box-shadow: 2px 2px 0px var(--color-acento-sombra); /* Sombra 3D */
-    }
-    .banner-content button:hover {
-        transform: translate(1px, 1px);
-        box-shadow: 1px 1px 0px var(--color-acento-sombra);
-    }
-
+.banner-content::before {
+    content: ''; position: absolute; z-index: -2; inset: -50%;
+    background: conic-gradient(var(--color-acento-principal), transparent 30%, transparent);
+    animation: border-chase 6s linear infinite;
+}
+.banner-content::after {
+    content: ''; position: absolute; z-index: -1; inset: 4px;
+    background: var(--color-contenedor); border-radius: 8px;
+}
+.banner-content h1, .banner-content p, .banner-content button {
+    position: relative; z-index: 2;
+}
+.banner-content h1 {
+    color: var(--color-acento-principal); margin-top: 0;
+    text-shadow: 2px 2px 0 var(--color-acento-sombra);
+}
+.banner-content button {
+    padding: 12px 24px; font-size: 1rem; font-weight: bold;
+    border-radius: 8px; cursor: pointer; transition: all 0.1s ease;
+    margin: 0.5rem; box-shadow: 2px 2px 0px var(--color-acento-sombra);
+}
+.banner-content button:hover {
+    transform: translate(1px, 1px);
+    box-shadow: 1px 1px 0px var(--color-acento-sombra);
+}
 #get-location-btn {
-    background-color: var(--color-acento-principal); /* Verde */
-    color: var(--color-texto-claro); /* Blanco Puro */
-    border: none;
+    background-color: var(--color-acento-principal);
+    color: var(--color-texto-claro); border: none;
 }
-    #get-location-btn:hover {
-        transform: scale(1.05) translate(1px, 1px);
-    }
-
 #skip-location-btn {
-    background-color: transparent;
-    color: var(--color-texto-oscuro); /* Texto oscuro */
-    border: 2px solid var(--color-texto-oscuro);
-    box-shadow: none;
+    background-color: transparent; color: var(--color-texto-oscuro);
+    border: 2px solid var(--color-texto-oscuro); box-shadow: none;
 }
-    #skip-location-btn:hover {
-        background-color: var(--color-texto-oscuro);
-        color: var(--color-texto-claro);
-        transform: none;
-        box-shadow: none;
-    }
 
-/* --- Estilos para la Carga de Video --- */
+/* --- CARGA DE VIDEO --- */
 #loader-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #000;
-    z-index: 9999;
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-color: #000; z-index: 9999;
 }
-
 #intro-video {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 75%;
-    height: auto;
-    max-width: 1400px;
-    border-radius: 12px;
-    border: 2px solid var(--color-acento-principal); /* Verde */
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%); width: 75%; height: auto;
+    max-width: 1400px; border-radius: 12px;
+    border: 2px solid var(--color-acento-principal);
     animation: pulse-shadow 3s ease-in-out infinite;
 }
-
-#header-video {
-    display: block;
-    height: 120px;
-    width: auto;
-    margin: 0 auto 1.5rem auto;
-    border-radius: 8px;
-    border: 2px solid var(--color-acento-principal); /* Verde */
-    animation: pulse-shadow 3s ease-in-out infinite;
-}
-
 #skip-video-btn {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    width: 40px;
-    height: 40px;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: var(--color-acento-detalle); /* Azul */
-    border: 2px solid var(--color-acento-detalle); /* Azul */
-    border-radius: 50%;
-    font-size: 1.2rem;
-    font-weight: bold;
-    cursor: pointer;
-    z-index: 10000;
-    transition: all 0.2s ease;
+    position: absolute; top: 20px; right: 20px;
+    width: 40px; height: 40px; background-color: rgba(0, 0, 0, 0.5);
+    color: var(--color-acento-detalle); border: 2px solid var(--color-acento-detalle);
+    border-radius: 50%; font-size: 1.2rem; font-weight: bold;
+    cursor: pointer; z-index: 10000; transition: all 0.2s ease;
 }
-    #skip-video-btn:hover {
-        background-color: var(--color-acento-detalle);
-        color: var(--color-texto-claro);
-    }
+#skip-video-btn:hover {
+    background-color: var(--color-acento-detalle); color: var(--color-texto-claro);
+}
 
-/* --- Contenedor Principal (Marco Crema) --- */
+/* --- CONTENEDOR PRINCIPAL --- */
 .main-container {
     padding: 2rem 1rem;
-    background-color: var(--color-contenedor); /* Crema */
-    max-width: 1200px;
-    margin: 2rem auto; /* Margen para ver el fondo amarillo */
-    border: 10px solid var(--color-contenedor); /* Borde Crema */
+    background-color: var(--color-contenedor);
+    max-width: 1200px; margin: 2rem auto;
+    border: 10px solid var(--color-contenedor);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
 }
-
-.map-controls {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 1rem;
+#header-video {
+    display: block; height: 120px; width: auto;
+    margin: 0 auto 1.5rem auto; border-radius: 8px;
+    border: 2px solid var(--color-acento-principal);
+    animation: pulse-shadow 3s ease-in-out infinite;
 }
-
+.map-controls {
+    display: flex; justify-content: center; margin-bottom: 1rem;
+}
 #theme-toggle-btn {
-    padding: 10px 20px;
-    font-size: 1rem;
-    font-weight: bold;
-    color: var(--color-texto-oscuro); /* Oscuro */
-    background-color: transparent;
-    border: 2px solid var(--color-acento-principal); /* Verde */
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.1s ease;
+    padding: 10px 20px; font-size: 1rem; font-weight: bold;
+    color: var(--color-texto-oscuro); background-color: transparent;
+    border: 2px solid var(--color-acento-principal); border-radius: 8px;
+    cursor: pointer; transition: all 0.1s ease;
     box-shadow: 2px 2px 0px var(--color-acento-sombra);
 }
-    #theme-toggle-btn:hover {
-        background-color: var(--color-acento-principal); /* Verde */
-        color: var(--color-texto-claro); /* Blanco Puro */
-        box-shadow: 1px 1px 0px var(--color-acento-sombra);
-        transform: translate(1px, 1px);
-    }
-
+#theme-toggle-btn:hover {
+    background-color: var(--color-acento-principal); color: var(--color-texto-claro);
+    box-shadow: 1px 1px 0px var(--color-acento-sombra); transform: translate(1px, 1px);
+}
 .map-description {
-    text-align: center;
-    max-width: 600px;
-    margin: 0 auto 1.5rem auto;
-    color: var(--color-texto-oscuro); /* Oscuro */
-    font-size: 1rem;
-    line-height: 1.5;
+    text-align: center; max-width: 600px; margin: 0 auto 1.5rem auto;
+    color: var(--color-texto-oscuro); font-size: 1rem; line-height: 1.5;
 }
-
 #mapa {
-    position: relative;
-    width: 100%;
-    height: 0;
-    padding-bottom: 75%; /* Ratio 4:3 */
-    border-radius: 8px;
-    background-color: #333;
-    overflow: hidden;
-    margin: 0 auto;
-    border: 2px solid #ddd;
+    position: relative; width: 100%; height: 0; padding-bottom: 75%;
+    border-radius: 8px; background-color: #333; overflow: hidden;
+    margin: 0 auto; border: 2px solid #ddd;
 }
-    #mapa .leaflet-container {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-    }
+#mapa .leaflet-container {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+}
 
+/* --- MARCADORES --- */
 @keyframes jump {
-    0% { top: 0; }
-    50% { top: -15px; }
-    100% { top: 0; }
+    0% { top: 0; } 50% { top: -15px; } 100% { top: 0; }
 }
 .marker-wrapper {
-    position: relative;
-    animation: jump 1.5s infinite;
+    position: relative; animation: jump 1.5s infinite;
 }
-
 .permanent-label {
-    background-color: var(--color-acento-principal); /* Verde */
-    border: 1px solid var(--color-acento-sombra); /* Verde Oscuro */
-    border-radius: 4px;
-    box-shadow: none;
-    color: var(--color-texto-claro); /* Blanco Puro */
-    font-size: 12px;
-    font-weight: bold;
-    padding: 3px 6px;
-    white-space: nowrap;
+    background-color: var(--color-acento-principal);
+    border: 1px solid var(--color-acento-sombra); border-radius: 4px;
+    box-shadow: none; color: var(--color-texto-claro);
+    font-size: 12px; font-weight: bold; padding: 3px 6px; white-space: nowrap;
 }
-
 .user-location-marker {
-    width: 20px;
-    height: 20px;
-    background-color: var(--color-acento-detalle); /* Azul */
-    border: 3px solid var(--color-contenedor); /* Borde Crema */
-    border-radius: 50%;
-    box-shadow: 0 0 10px #000;
-    position: relative;
-    animation: jump 1.5s infinite;
+    width: 20px; height: 20px; background-color: var(--color-acento-detalle);
+    border: 3px solid var(--color-contenedor); border-radius: 50%;
+    box-shadow: 0 0 10px #000; position: relative; animation: jump 1.5s infinite;
 }
 
-/* --- ESTILOS PARA EL FILTRO DE FECHAS Y BOTONES --- */
+/* --- FILTRO DE FECHAS --- */
 .date-filter-container-wrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-    width: 100%;
-    max-width: 900px;
-    margin: 0 auto 1.5rem auto;
+    position: relative; display: flex; align-items: center;
+    width: 100%; max-width: 900px; margin: 0 auto 1.5rem auto;
 }
-
 .scroll-btn {
-    background-color: var(--color-contenedor); /* Crema */
-    color: var(--color-acento-principal); /* Verde */
-    border: 2px solid var(--color-acento-principal); /* Verde */
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    font-size: 1.5rem;
-    font-weight: bold;
-    cursor: pointer;
-    z-index: 10;
-    transition: all 0.1s ease;
-    flex-shrink: 0;
+    background-color: var(--color-contenedor); color: var(--color-acento-principal);
+    border: 2px solid var(--color-acento-principal); border-radius: 50%;
+    width: 40px; height: 40px; font-size: 1.5rem; font-weight: bold;
+    cursor: pointer; z-index: 10; transition: all 0.1s ease; flex-shrink: 0;
     box-shadow: 2px 2px 0px var(--color-acento-sombra);
 }
-    .scroll-btn:hover {
-        background-color: var(--color-acento-principal); /* Verde */
-        color: var(--color-texto-claro); /* Blanco Puro */
-        box-shadow: 1px 1px 0px var(--color-acento-sombra);
-        transform: translate(1px, 1px);
-    }
-    .scroll-btn#scroll-left-btn {
-        margin-right: 10px;
-    }
-    .scroll-btn#scroll-right-btn {
-        margin-left: 10px;
-    }
-
+.scroll-btn:hover {
+    background-color: var(--color-acento-principal); color: var(--color-texto-claro);
+    box-shadow: 1px 1px 0px var(--color-acento-sombra); transform: translate(1px, 1px);
+}
+#scroll-left-btn { margin-right: 10px; }
+#scroll-right-btn { margin-left: 10px; }
 .date-filter-container {
-    width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    scroll-behavior: smooth;
+    width: 100%; overflow-x: auto; scrollbar-width: none; scroll-behavior: smooth;
 }
-    .date-filter-container::-webkit-scrollbar {
-        display: none;
-    }
-
+.date-filter-container::-webkit-scrollbar { display: none; }
 #date-cards-wrapper {
-    display: flex;
-    flex-wrap: nowrap;
-    gap: 15px;
-    padding: 10px 0;
+    display: flex; flex-wrap: nowrap; gap: 15px; padding: 10px 0;
 }
-
 .date-card {
-    flex: 0 0 auto;
-    width: 120px;
-    padding: 10px;
-    background-color: var(--color-contenedor); /* Crema */
-    border: 2px solid #E0E0E0;
-    border-radius: 8px;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-sizing: border-box;
+    flex: 0 0 auto; width: 120px; padding: 10px;
+    background-color: var(--color-contenedor); border: 2px solid #E0E0E0;
+    border-radius: 8px; text-align: center; cursor: pointer;
+    transition: all 0.3s ease; box-sizing: border-box;
 }
-    .date-card:hover {
-        transform: translateY(-5px);
-        border-color: var(--color-acento-principal);
-    }
-    .date-card.selected {
-        border-color: var(--color-acento-principal); /* Verde */
-        background-color: #EAF5D8; /* Verde muy claro */
-        box-shadow: 0 0 15px rgba(152, 201, 60, 0.3); /* Sombra verde */
-    }
-    .date-card.nav-card {
-        /* Este estilo se mantiene por si se reutiliza 'createNavCard', aunque ahora no se usa */
-        position: relative;
-        overflow: hidden;
-        border: none;
-        font-weight: bold;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        z-index: 1;
-        border-radius: 8px;
-    }
-        .date-card.nav-card::before {
-            content: '';
-            position: absolute;
-            z-index: -1;
-            inset: -25%;
-            background: conic-gradient( var(--color-acento-principal), transparent 30%, transparent ); /* Verde */
-            animation: border-chase 2.5s linear infinite;
-        }
-        .date-card.nav-card::after {
-            content: '';
-            position: absolute;
-            z-index: -1;
-            inset: 2px;
-            background: var(--color-contenedor); /* Crema */
-            border-radius: 7px;
-        }
-        .date-card.nav-card img,
-        .date-card.nav-card .date-day {
-            position: relative;
-            z-index: 2;
-        }
-    .date-card img {
-        width: 50px;
-        height: 50px;
-        object-fit: cover;
-        border-radius: 50%;
-        margin-bottom: 8px;
-        border: 1px solid var(--color-acento-principal); /* Verde */
-    }
-    .date-card .date-day {
-        font-size: 0.9rem;
-        font-weight: bold;
-        color: var(--color-texto-oscuro); /* Oscuro */
-        margin: 0;
-    }
-    .date-card .date-full {
-        font-size: 0.8rem;
-        color: #777; /* Gris oscuro */
-        margin: 0;
-    }
-
-/* --- ESTILOS PARA LOS FILTROS DE HORA Y CATEGORÍA --- */
-/* Los estilos se mantienen por si se añaden filtros en el futuro, pero el HTML está eliminado */
-.time-filter-controls, .category-filter-controls {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 1.5rem;
-    flex-wrap: wrap;
+.date-card:hover {
+    transform: translateY(-5px); border-color: var(--color-acento-principal);
+}
+.date-card.selected {
+    border-color: var(--color-acento-principal); background-color: #EAF5D8;
+    box-shadow: 0 0 15px rgba(152, 201, 60, 0.3);
+}
+.date-card.nav-card {
+    position: relative; overflow: hidden; border: none; font-weight: bold;
+    display: flex; flex-direction: column; justify-content: center;
+    align-items: center; z-index: 1; border-radius: 8px;
+}
+.date-card.nav-card::before {
+    content: ''; position: absolute; z-index: -1; inset: -25%;
+    background: conic-gradient(var(--color-acento-principal), transparent 30%, transparent);
+    animation: border-chase 2.5s linear infinite;
+}
+.date-card.nav-card::after {
+    content: ''; position: absolute; z-index: -1; inset: 2px;
+    background: var(--color-contenedor); border-radius: 7px;
+}
+.date-card.nav-card img, .date-card.nav-card .date-day { position: relative; z-index: 2; }
+.date-card img {
+    width: 50px; height: 50px; object-fit: cover; border-radius: 50%;
+    margin-bottom: 8px; border: 1px solid var(--color-acento-principal);
+}
+.date-card .date-day {
+    font-size: 0.9rem; font-weight: bold; color: var(--color-texto-oscuro); margin: 0;
+}
+.date-card .date-full {
+    font-size: 0.8rem; color: #777; margin: 0;
 }
 
-.time-filter-btn, .category-filter-btn {
-    padding: 8px 18px;
-    font-size: 0.9rem;
-    font-weight: bold;
-    color: var(--color-texto-secundario); /* Verde Oscuro */
-    background-color: transparent;
-    border: 2px solid var(--color-texto-secundario); /* Verde Oscuro */
-    border-radius: 20px;
-    cursor: pointer;
-    transition: all 0.1s ease;
-}
-    .time-filter-btn:hover, .category-filter-btn:hover {
-        border-color: var(--color-acento-principal); /* Verde Lima */
-        color: var(--color-acento-principal); /* Verde Lima */
-    }
-    .time-filter-btn.active, .category-filter-btn.active {
-        background-color: var(--color-acento-principal); /* Verde Lima */
-        color: var(--color-texto-claro); /* Blanco Puro */
-        border-color: var(--color-acento-principal); /* Verde Lima */
-        box-shadow: 2px 2px 0px var(--color-acento-sombra);
-    }
-    .time-filter-btn.active:hover, .category-filter-btn.active:hover {
-        transform: translate(1px, 1px);
-        box-shadow: 1px 1px 0px var(--color-acento-sombra);
-    }
-
-/* --- ESTILOS PARA LA IMAGEN ANTES DEL MAPA --- */
+/* --- IMAGEN ANTES DEL MAPA --- */
 .pre-map-image-container {
-    text-align: center;
-    margin: 0 auto 1.5rem auto;
-    padding: 0 1rem;
-    max-width: 600px;
+    text-align: center; margin: 0 auto 1.5rem auto; padding: 0 1rem; max-width: 600px;
 }
 .pre-map-image {
-    width: 100%;
-    height: auto;
-    border-radius: 12px;
-    border: 2px solid var(--color-acento-principal); /* Verde */
-    box-shadow: 0 0 20px rgba(152, 201, 60, 0.3); /* Sombra verde */
-    display: block;
+    width: 100%; height: auto; border-radius: 12px;
+    border: 2px solid var(--color-acento-principal);
+    box-shadow: 0 0 20px rgba(152, 201, 60, 0.3); display: block;
 }
-    .pre-map-image:not(:last-child) {
-        margin-bottom: 1rem;
-    }
+.pre-map-image:not(:last-child) { margin-bottom: 1rem; }
 
-/* --- ESTILOS PARA EL POPUP DE EVENTOS --- */
+/* --- POPUP DE EVENTOS --- */
 .event-popup-content {
-    max-height: 200px;
-    overflow-y: auto;
-    overflow-x: hidden;
-    font-size: 0.9rem;
-    scrollbar-width: thin;
-    scrollbar-color: var(--color-acento-principal) #eee; /* Verde y gris */
+    max-height: 200px; overflow-y: auto; overflow-x: hidden;
+    font-size: 0.9rem; scrollbar-width: thin;
+    scrollbar-color: var(--color-acento-principal) #eee;
 }
-    .event-popup-content::-webkit-scrollbar {
-        width: 8px;
-    }
-    .event-popup-content::-webkit-scrollbar-track {
-        background: #eee;
-    }
-    .event-popup-content::-webkit-scrollbar-thumb {
-        background-color: var(--color-acento-principal); /* Verde */
-        border-radius: 10px;
-    }
-    .event-popup-content h3 {
-        color: var(--color-acento-principal); /* Verde */
-        margin-top: 0;
-        margin-bottom: 10px;
-        font-size: 1.1rem;
-        text-shadow: 1px 1px 0 var(--color-acento-sombra);
-    }
-    .event-popup-content p {
-        margin: 0 0 8px 0;
-        padding-bottom: 5px;
-        border-bottom: 1px solid #eee; /* Borde claro */
-    }
-        .event-popup-content p:last-child {
-            border-bottom: none;
-        }
-    .event-popup-content strong {
-        color: var(--color-texto-oscuro); /* Oscuro */
-    }
-    .event-popup-content span {
-        color: #555; /* Gris oscuro */
-    }
-
+.event-popup-content::-webkit-scrollbar { width: 8px; }
+.event-popup-content::-webkit-scrollbar-track { background: #eee; }
+.event-popup-content::-webkit-scrollbar-thumb {
+    background-color: var(--color-acento-principal); border-radius: 10px;
+}
+.event-popup-content h3 {
+    color: var(--color-acento-principal); margin-top: 0; margin-bottom: 10px;
+    font-size: 1.1rem; text-shadow: 1px 1px 0 var(--color-acento-sombra);
+}
+.event-popup-content p {
+    margin: 0 0 8px 0; padding-bottom: 5px; border-bottom: 1px solid #eee;
+}
+.event-popup-content p:last-child { border-bottom: none; }
+.event-popup-content strong { color: var(--color-texto-oscuro); }
+.event-popup-content span { color: #555; }
 .cronograma-btn {
-    display: block;
-    margin-top: 15px;
-    padding: 10px;
-    background-color: var(--color-acento-principal); /* Verde */
-    color: var(--color-texto-claro); /* Blanco Puro */
-    text-align: center;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 0.9rem;
-    border-radius: 8px;
-    transition: all 0.1s ease;
+    display: block; margin-top: 15px; padding: 10px;
+    background-color: var(--color-acento-principal); color: var(--color-texto-claro);
+    text-align: center; text-decoration: none; font-weight: bold; font-size: 0.9rem;
+    border-radius: 8px; transition: all 0.1s ease;
     box-shadow: 2px 2px 0px var(--color-acento-sombra);
 }
-    .cronograma-btn:hover {
-        transform: scale(1.05) translate(1px, 1px);
-        box-shadow: 1px 1px 0px var(--color-acento-sombra);
-    }
+.cronograma-btn:hover {
+    transform: scale(1.05) translate(1px, 1px);
+    box-shadow: 1px 1px 0px var(--color-acento-sombra);
+}
 
-/* --- ESTILOS DE LEAFLET Y RESPONSIVE --- */
+/* --- LEAFLET --- */
 .leaflet-popup-content-wrapper {
-    background-color: var(--color-contenedor); /* Crema */
-    color: var(--color-texto-oscuro); /* Oscuro */
-    border-radius: 8px;
-    border: 1px solid var(--color-acento-principal); /* Verde */
+    background-color: var(--color-contenedor); color: var(--color-texto-oscuro);
+    border-radius: 8px; border: 1px solid var(--color-acento-principal);
     max-width: 320px;
 }
-.leaflet-popup-content {
-    margin: 15px;
-    width: auto !important;
-}
-.leaflet-popup-tip {
-    background: var(--color-contenedor); /* Crema */
-}
-
+.leaflet-popup-content { margin: 15px; width: auto !important; }
+.leaflet-popup-tip { background: var(--color-contenedor); }
 .leaflet-control-fullscreen a {
-    background-color: var(--color-contenedor) !important; /* Crema */
-    color: var(--color-texto-oscuro) !important; /* Oscuro */
+    background-color: var(--color-contenedor) !important;
+    color: var(--color-texto-oscuro) !important;
 }
-    .leaflet-control-fullscreen a:hover {
-        background-color: var(--color-acento-principal) !important; /* Verde */
-        color: var(--color-texto-claro) !important; /* Blanco Puro */
-    }
-.leaflet-control-zoom a {
-    width: 38px !important;
-    height: 38px !important;
-    line-height: 38px !important;
-    font-size: 1.6rem !important;
-    font-weight: bold;
+.leaflet-control-fullscreen a:hover {
+    background-color: var(--color-acento-principal) !important;
+    color: var(--color-texto-claro) !important;
 }
 
-.intro-tooltip {
-    position: fixed;
-    background-color: var(--color-acento-principal); /* Verde */
-    color: var(--color-texto-claro); /* Blanco Puro */
-    padding: 8px 12px;
-    border-radius: 6px;
+/* --- FOOTER (FIRMA) --- */
+.main-footer {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem; /* Añadido para dar espacio en la parte inferior */
+    /* Removido el border-top porque el fondo amarillo ya da el contraste */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.footer-logo {
+    height: 60px; /* Ajusta este valor según el tamaño de tu logo */
+    width: auto;
+    margin-bottom: 10px;
+    filter: brightness(0) invert(1); /* Hace que el logo blanco se vea blanco sobre fondo amarillo */
+}
+.main-footer p {
+    margin: 0;
+    color: var(--color-texto-claro); /* Texto blanco para contraste con el amarillo */
     font-size: 0.9rem;
-    font-weight: bold;
-    z-index: 10001;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
-    opacity: 1;
-    transition: opacity 0.5s ease-in-out;
-}
-    .intro-tooltip::after {
-        content: '';
-        position: absolute;
-        width: 0;
-        height: 0;
-        border-style: solid;
-    }
-    .intro-tooltip.right::after {
-        left: -10px;
-        top: 50%;
-        transform: translateY(-50%);
-        border-width: 5px 10px 5px 0;
-        border-color: transparent var(--color-acento-principal) transparent transparent; /* Verde */
-    }
-
-@keyframes fadeOut {
-    from { opacity: 1; }
-    to { opacity: 0; }
-}
-.fade-out {
-    animation: fadeOut 1.5s forwards;
+    line-height: 1.4;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3); /* Ligera sombra para mejorar legibilidad */
 }
 
+/* --- RESPONSIVE --- */
 @media (max-width: 768px) {
-    body {
-        overflow-y: auto;
-    }
-    .main-container {
-        margin: 1rem;
-        padding: 1rem;
-    }
-    .banner-content {
-        padding: 1.5rem;
-    }
-    #intro-video {
-        width: 95%;
-    }
-    #header-video {
-        height: 100px;
-    }
-    #skip-video-btn {
-        width: 35px;
-        height: 35px;
-        font-size: 1rem;
-        top: 15px;
-        right: 15px;
-    }
-    .scroll-btn {
-        display: none; /* Ocultar flechas en móvil, se usa scroll táctil */
-    }
-}
-
-@media (max-width: 400px) {
-    .leaflet-popup-content-wrapper {
-        width: calc(90vw - 30px);
-    }
-    .leaflet-popup-content {
-        margin: 10px;
-    }
+    .main-container { margin: 1rem; padding: 1rem; }
+    .banner-content { padding: 1.5rem; }
+    #intro-video { width: 95%; }
+    #header-video { height: 100px; }
+    #skip-video-btn { width: 35px; height: 35px; font-size: 1rem; top: 15px; right: 15px; }
+    .scroll-btn { display: none; }
 }
