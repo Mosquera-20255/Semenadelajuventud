@@ -17,137 +17,125 @@ document.addEventListener('DOMContentLoaded', function () {
     const categoryFilterButtons = document.querySelectorAll('.category-filter-btn');
 
     // 2. Datos y Coordenadas
-    const defaultCoords = [4.704936, -74.230412]; // Coordenadas de Mosquera
+    const defaultCoords = [4.7059, -74.2302]; // Coordenadas aproximadas del centro de Mosquera
 
-    // ... (DATOS DEL CRONOGRAMA - preMapImages y eventsData - van aquí)
+    // ⚠️ ==================================================================
+    // ⚠️ CRONOGRAMA Y EVENTOS ACTUALIZADOS (CON MÚLTIPLES IMÁGENES .JPG)
+    // ⚠️ ==================================================================
     const preMapImages = {
-        '2025-11-11': ['martes-11-nov.jpg'],
-        '2025-11-12': ['miercoles-12-nov.jpg'],
-        '2025-11-13': ['jueves-13-nov.jpg'],
-        '2025-11-14': ['viernes-14-nov.jpg'],
-        '2025-11-15': ['sabado-15-nov.jpg'],
-        '2025-11-16': ['domingo-16-nov.jpg'],
+        '2025-11-11': ['martes-11-nov.JPG'],
+        '2025-11-12': ['miercoles-12-nov.JPG'],
+        '2025-11-13': ['jueves-13-nov.JPG', 'jueves-13-nov2.JPG', 'jueves-13-nov3.JPG'],
+        '2025-11-14': ['viernes-14-nov.JPG'],
+        '2025-11-15': ['sabado-15-nov.JPG', 'sabado-15-nov2.JPG'],
+        '2025-11-16': ['domingo-16-nov.JPG', 'domingo-16-nov2.JPG'],
     };
 
     const eventsData = [
         // Martes, 11 de noviembre
-        { 
-            lat: 4.7049, lng: -74.2298, location: 'Parque de Mosquera', 
-            name: 'Noche de Poderes', time: '6:00 p.m. a 9:00 p.m.', 
+        {
+            lat: 4.7059, lng: -74.2302, location: 'Parque Principal',
+            name: 'Noche de Poderes (Apertura)', time: '6:00 p.m.',
             date: '2025-11-11', category: 'cultura', img: 'icono_concierto.png'
         },
+
         // Miércoles, 12 de noviembre
-        { 
-            lat: 4.7105, lng: -74.2258, location: 'Auditorio Municipal', 
-            name: '"Capitan Eco-impacto" (Cine Foro Ambiental)', time: '8:00 a.m. a 11:00 a.m.', 
+        {
+            lat: 4.7065, lng: -74.2288, location: 'Auditorio Municipal',
+            name: 'Cine al barrio (Eco-impacto)', time: '8:00 a.m.',
             date: '2025-11-12', category: 'cultura', img: 'icono_cine.png'
         },
-        { 
-            lat: 4.7125, lng: -74.2215, location: 'Ecoplaza', 
-            name: '"Capitán Misión Futuro" (Feria de empleo y practicas Juveniles)', time: '12:00 m. a 5:00 p.m.', 
+        {
+            lat: 4.7059, lng: -74.2302, location: 'Parque Principal',
+            name: 'Feria de oportunidades', time: '9:00 a.m.',
             date: '2025-11-12', category: 'cultura', img: 'icono_empleo.png'
         },
-        { 
-            lat: 4.6833, lng: -74.2571, location: 'Los Puentes', 
-            name: '"La Pluma de Superman" (Taller de literatura)', time: '7:00 p.m. a 9:00 p.m.', 
+        {
+            lat: 4.7035, lng: -74.2272, location: 'Biblioteca San Juan Bosco',
+            name: 'Taller de literatura', time: '4:00 p.m.',
             date: '2025-11-12', category: 'cultura', img: 'icono_literatura.png'
         },
-        { 
-            lat: 4.7095, lng: -74.2335, location: 'La Salle, Tenco (SENA Aprox.)', 
-            name: '"Escuadrón Campus" (Talleres para jóvenes universitarios de nocturna)', time: '7:00 p.m. a 9:00 p.m.', 
-            date: '2025-11-12', category: 'cultura', img: 'icono_educacion.png'
+        {
+            lat: 4.7120, lng: -74.2235, location: 'Plazoleta Villa Nueva',
+            name: 'Rumbaterapia neón', time: '7:00 p.m.',
+            date: '2025-11-12', category: 'deporte', img: 'icono_deporte.png'
         },
+
         // Jueves, 13 de noviembre
-        { 
-            lat: 4.6905, lng: -74.2747, location: 'Laguna de la Herrera', 
-            name: 'Guardianes del Planeta (Siembra de árboles)', time: '8:00 a.m. a 11:00 a.m.', 
+        {
+            lat: 4.6950, lng: -74.2550, location: 'Humedal Gualí', // Coordenadas aproximadas
+            name: 'Sembratón (Guardianes del Planeta)', time: '8:00 a.m.',
             date: '2025-11-13', category: 'cultura', img: 'icono_eco.png'
         },
-        { 
-            lat: 4.7062, lng: -74.2305, location: 'Barrio Orinzo', 
-            name: 'El Color del Cambio: El héroe que pinta los sueños (Mural)', time: '9:00 a.m. a 10:30 a.m.', 
+        {
+            lat: 4.7090, lng: -74.2315, location: 'Skate Park',
+            name: 'Muralismo (El color del cambio)', time: '9:00 a.m.',
             date: '2025-11-13', category: 'cultura', img: 'icono_arte.png'
         },
-        { 
-            lat: 4.7049, lng: -74.2298, location: 'Salón de Alcaldes (Alcaldía)', 
-            name: 'Guardianes Holográficos (Taller de Hologramas)', time: '2:00 p.m. a 3:00 p.m.', 
-            date: '2025-11-13', category: 'cultura', img: 'icono_tech.png'
+        {
+            lat: 4.7042, lng: -74.2320, location: 'Coliseo Lucio Amórtegui',
+            name: 'Taller de Defensa Personal', time: '4:00 p.m.',
+            date: '2025-11-13', category: 'deporte', img: 'icono_deporte.png'
         },
-        { 
-            lat: 4.6930, lng: -74.1735, location: 'Centro Cultural de Oriente', 
-            name: '"La Pluma de Superman" (Obra - Candida Erendidira)', time: '4:00 p.m.', 
-            date: '2025-11-13', category: 'cultura', img: 'icono_teatro.png'
-        },
-        { 
-            lat: 4.7035, lng: -74.2325, location: 'Skate Park (Punto de inicio)', 
-            name: 'Héroes Sobre Ruedas: La Ciudad es Nuestra Pista (Rodada nocturna)', time: '7:00 p.m. a 9:00 p.m.', 
+        {
+            lat: 4.7059, lng: -74.2302, location: 'Salida Parque Principal',
+            name: 'Rodada Nocturna', time: '7:00 p.m.',
             date: '2025-11-13', category: 'deporte', img: 'icono_bici.png'
         },
+
         // Viernes, 14 de noviembre
-        { 
-            lat: 4.7049, lng: -74.2298, location: 'Lugar por definir (Mostrando Parque)', 
-            name: 'Misión Juventud: Operación Sabana (Encuentro de Consejeros de Juventud)', time: '8:00 a.m. a 12:00 m.', 
-            date: '2025-11-14', category: 'cultura', img: 'icono_educacion.png'
+        {
+            lat: 4.7059, lng: -74.2302, location: 'Parque Principal',
+            name: 'Feria de emprendimiento', time: '2:00 p.m.',
+            date: '2025-11-14', category: 'cultura', img: 'icono_empleo.png'
         },
-        { 
-            lat: 4.7038, lng: -74.2319, location: 'Coliseo Lucio Amortegui', 
-            name: '"Fuerza Juvenil: Súper Remate" (Torneo de Voleibol Piso Mixto)', time: '6:00 p.m. a 10:00 p.m.', 
-            date: '2025-11-14', category: 'deporte', img: 'icono_deporte.png'
+        {
+            lat: 4.7059, lng: -74.2302, location: 'Parque Principal',
+            name: 'Concierto de Talentos Locales', time: '5:00 p.m.',
+            date: '2025-11-14', category: 'cultura', img: 'icono_concierto.png'
         },
-        { 
-            lat: 4.7129, lng: -74.2286, location: 'La Cumbre', 
-            name: '"Fuerza Juvenil: Flash gol" (Torneo de Futsal Femenino)', time: '6:00 p.m. a 10:00 p.m.', 
-            date: '2025-11-14', category: 'deporte', img: 'icono_deporte.png'
-        },
-        { 
-            lat: 4.7260, lng: -74.2282, location: 'Ciudad Sabana', 
-            name: '"Fuerza Juvenil: Flash gol" (Torneo de Futsal Masculino)', time: '6:00 p.m. a 10:00 p.m.', 
-            date: '2025-11-14', category: 'deporte', img: 'icono_deporte.png'
-        },
+
         // Sábado, 15 de noviembre
-        { 
-            lat: 4.7147, lng: -74.2181, location: 'Lote Zapatoca de Mosquera', 
-            name: 'MEGA FEST ESPACIO CHILL (Stands, Moda, Concierto y más)', time: '11:00 a.m. a 11:00 p.m.', 
+        {
+            lat: 4.7030, lng: -74.2310, location: 'Villa Olímpica',
+            name: 'Festival de la Juventud (Mega Fest)', time: '10:00 a.m.',
             date: '2025-11-15', category: 'cultura', img: 'icono_concierto.png'
         },
+
         // Domingo, 16 de noviembre
-        { 
-            lat: 4.7086, lng: -74.2236, location: 'Parque del Trébol', 
-            name: '"Súper huella: Guardianes de 4 patas" (Carrera PetFriendly)', time: '8:00 a.m. a 11:00 a.m.', 
-            date: '2025-11-16', category: 'deporte', img: 'icono_pet.png'
+        {
+            lat: 4.7059, lng: -74.2302, location: 'Salida Parque Principal (hacia Mondoñedo)',
+            name: 'Caminata Ecológica', time: '7:00 a.m.',
+            date: '2025-11-16', category: 'deporte', img: 'icono_eco.png'
+        },
+        {
+            lat: 4.7150, lng: -74.2250, location: 'Parque de las Aguas', // Coordenadas aproximadas
+            name: 'Picnic al parque', time: '2:00 p.m.',
+            date: '2025-11-16', category: 'cultura', img: 'icono_pet.png'
         }
     ];
+    // ⚠️ ==================================================================
+    // ⚠️ FIN DE LA SECCIÓN DE DATOS
+    // ⚠️ ==================================================================
 
     // ==================================================================
-    // ⬇️ NUEVA FUNCIÓN DE PRECARGA ⬇️
+    // ⬇️ FUNCIÓN DE PRECARGA ⬇️
     // ==================================================================
-    /**
-     * Precarga dinámicamente las imágenes del cronograma y los íconos del mapa.
-     * Esto se ejecuta en segundo plano mientras el video de intro se reproduce.
-     */
     function preloadDataImages() {
-        console.log("Iniciando precarga de imágenes dinámicas...");
-        // 1. Obtener todas las imágenes de preMapImages
-        // .flat() convierte [[img1], [img2]] en [img1, img2]
-        const dailyImages = Object.values(preMapImages).flat(); 
-
-        // 2. Obtener todos los íconos únicos de eventsData
-        // new Set() asegura que solo carguemos cada ícono una vez
+        // console.log("Iniciando precarga de imágenes dinámicas...");
+        const dailyImages = Object.values(preMapImages).flat();
         const markerIcons = [...new Set(eventsData.map(event => event.img))];
-
-        // 3. Combinar ambas listas
         const allImagesToPreload = [...dailyImages, ...markerIcons];
 
-        // 4. Crear un objeto Image() para cada una, forzando la descarga y caché
         allImagesToPreload.forEach(url => {
-            if (url) { // Evita errores si alguna URL está vacía
+            if (url) {
                 const img = new Image();
                 img.src = url;
             }
         });
     }
     // ==================================================================
-    // ⬆️ FIN DE LA NUEVA FUNCIÓN ⬆️
+    // ⬆️ FIN DE LA FUNCIÓN DE PRECARGA ⬆️
     // ==================================================================
 
 
@@ -155,7 +143,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let visibleMarkers = L.layerGroup();
     let selectedDate = null;
     let selectedTimeFilter = 'all';
-    let selectedCategoryFilter = 'all'; 
+    let selectedCategoryFilter = 'all';
 
     // --- Definición de TODAS las funciones ANTES de usarlas ---
 
@@ -177,7 +165,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (imagesForDate && imagesForDate.length > 0) {
             imagesForDate.forEach(imageName => {
                 const newImage = document.createElement('img');
-                newImage.src = imageName; 
+                newImage.src = imageName;
                 newImage.alt = "Cronograma del Evento";
                 newImage.className = 'pre-map-image';
                 preMapImageContainer.appendChild(newImage);
@@ -191,13 +179,13 @@ document.addEventListener('DOMContentLoaded', function () {
     function createDateCard(dateString) {
         const parts = dateString.split('-');
         const date = new Date(parts[0], parseInt(parts[1]) - 1, parts[2]);
-        
+
         const card = document.createElement('div');
         card.className = 'date-card';
         card.dataset.date = dateString;
-        
+
         card.innerHTML = `
-            <img src="FECHA.png" alt="Icono de fecha"> 
+            <img src="FECHA.png" alt="Icono de fecha">
             <p class="date-day">${date.toLocaleString('es-ES', { weekday: 'short', day: 'numeric', timeZone: 'UTC' })}</p>
             <p class="date-full">${date.toLocaleString('es-ES', { month: 'short', timeZone: 'UTC' })}</p>
         `;
@@ -211,10 +199,10 @@ document.addEventListener('DOMContentLoaded', function () {
         });
         return card;
     }
-    
+
     function createNavCard(text) {
         const card = document.createElement('div');
-        card.className = 'date-card nav-card'; 
+        card.className = 'date-card nav-card';
         card.innerHTML = `
             <img src="FECHA.png" alt="Icono de navegación">
             <p class="date-day" style="margin-top: 8px;">${text}</p>
@@ -240,7 +228,7 @@ document.addEventListener('DOMContentLoaded', function () {
         dateCardsWrapper.appendChild(backCard);
 
         const futureDates = allEventDates.filter(d => d > todayString);
-        
+
         futureDates.forEach(dateStr => {
             const dateCard = createDateCard(dateStr);
             dateCardsWrapper.appendChild(dateCard);
@@ -249,7 +237,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function showInitialDateView(todayString, pastDates, allEventDates) {
         dateCardsWrapper.innerHTML = '';
-        
+
         if (pastDates.length > 0) {
             const pastCard = createNavCard('‹ Anteriores');
             pastCard.addEventListener('click', () => showDateCards(pastDates));
@@ -274,12 +262,12 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function setupDynamicDateFilter() {
-        const todayString = getTodayString(); 
-        const allEventDates = [...new Set(eventsData.map(e => e.date))].sort(); 
+        const todayString = getTodayString();
+        const allEventDates = [...new Set(eventsData.map(e => e.date))].sort();
         const pastDates = allEventDates.filter(d => d < todayString);
-        
+
         showInitialDateView(todayString, pastDates, allEventDates);
-        
+
         const todayCard = document.querySelector('.date-card[data-date-type="today"]');
         if (todayCard) {
             todayCard.click();
@@ -292,7 +280,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             } else if (pastDates.length > 0) {
                 const lastPastCard = document.querySelector(`.date-card[data-date="${pastDates[pastDates.length - 1]}"]`);
-                 if(lastPastCard) lastPastCard.click();
+                if (lastPastCard) lastPastCard.click();
             }
         }
     }
@@ -300,17 +288,24 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function parseTime(timeString) {
         try {
-            const cleanTime = timeString.replace(/\./g, '').toLowerCase();
-            const parts = cleanTime.split(' a ');
-            let startHour = parseInt(parts[0].split(':')[0]);
-            let endHour = parseInt(parts[1].split(':')[0]);
-            if (parts[0].includes('p.m.') && startHour !== 12) startHour += 12;
-            if (parts[0].includes('m.') && startHour == 12) startHour = 12; // Mediodía
-            if (parts[0].includes('a.m.') && startHour === 12) startHour = 0; // Medianoche
-            if (parts[1].includes('p.m.') && endHour !== 12) endHour += 12;
-            if (parts[1].includes('a.m.') && endHour === 12) endHour = 24; // Medianoche
-            if (parts[1].includes('m.') && endHour == 12) endHour = 12; // Mediodía
-            return [startHour, endHour];
+            const cleanTime = timeString.toLowerCase().replace(/\./g, '').trim();
+            const match = cleanTime.match(/^(\d{1,2}):(\d{2})\s*(am|pm|m)?/);
+
+            if (match) {
+                let hour = parseInt(match[1]);
+                const period = match[3];
+
+                if (period === 'pm' && hour !== 12) {
+                    hour += 12;
+                } else if (period === 'am' && hour === 12) {
+                    hour = 0;
+                } else if (period === 'm' && hour === 12) {
+                     hour = 12;
+                }
+
+                return [hour, null];
+            }
+            return [null, null];
         } catch (e) {
             return [null, null];
         }
@@ -329,32 +324,32 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function mostrarMarcadores(eventosAgrupados) {
         Object.values(eventosAgrupados).forEach(group => {
-            const icon = L.divIcon({ 
-                className: 'marker-wrapper', 
-                html: `<img src="${group.img}" style="width: 75px; height: auto;">`, 
-                iconSize: [75, 62], 
-                iconAnchor: [37, 62] 
+            const icon = L.divIcon({
+                className: 'marker-wrapper',
+                html: `<img src="${group.img}" style="width: 75px; height: auto;">`,
+                iconSize: [75, 62],
+                iconAnchor: [37, 62]
             });
             const marker = L.marker([group.lat, group.lng], { icon: icon });
-            
-            const cronogramaUrl = '#'; 
-            
+
+            const cronogramaUrl = '#';
+
             let popupContent = `<div class="event-popup-content"><h3>${group.location}</h3>`;
             group.events.forEach(event => {
                 popupContent += `<p><strong>${event.name}</strong><br><span>${event.time}</span></p>`;
             });
-            
-            if(cronogramaUrl !== '#') {
+
+            if (cronogramaUrl !== '#') {
                 popupContent += `<a href="${cronogramaUrl}" target="_blank" class="cronograma-btn">Ver cronograma completo</a>`;
             }
             popupContent += `</div>`;
-            
+
             marker.bindPopup(popupContent);
-            marker.bindTooltip(group.location, { 
-                permanent: true, 
-                direction: 'top', 
-                offset: [0, -70], 
-                className: 'permanent-label' 
+            marker.bindTooltip(group.location, {
+                permanent: true,
+                direction: 'top',
+                offset: [0, -70],
+                className: 'permanent-label'
             });
             visibleMarkers.addLayer(marker);
         });
@@ -364,21 +359,21 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!selectedDate) return;
         visibleMarkers.clearLayers();
         let eventosDelDia = eventsData.filter(event => event.date === selectedDate);
-        
+
         let eventosFiltradosPorHora = eventosDelDia.filter(event => {
             if (selectedTimeFilter === 'all') return true;
-            const [startHour, endHour] = parseTime(event.time);
+            const [startHour, _] = parseTime(event.time);
             if (startHour === null) return true;
             if (selectedTimeFilter === 'am') return startHour < 12;
-            if (selectedTimeFilter === 'pm') return endHour >= 12;
+            if (selectedTimeFilter === 'pm') return startHour >= 12;
             return false;
         });
-        
+
         let eventosFinales = eventosFiltradosPorHora.filter(event => {
             if (selectedCategoryFilter === 'all') return true;
             return event.category === selectedCategoryFilter;
         });
-        
+
         const eventosAgrupados = agruparEventos(eventosFinales);
         mostrarMarcadores(eventosAgrupados);
     }
@@ -411,24 +406,20 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    function mostrarMensajesIntroductorios() {
-        // Función vacía
-    }
-
     function inicializarMapa(coords, userLocationFound) {
         document.body.style.overflow = 'auto';
         mainContainer.style.display = 'block';
-        
+
         if (mapInstance) {
-             mapInstance.remove();
+            mapInstance.remove();
         }
-        
-        mapInstance = L.map('mapa').setView(coords, 14);
+
+        mapInstance = L.map('mapa').setView(coords, 15);
 
         const lightLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; OpenStreetMap contributors'
         }).addTo(mapInstance);
-        
+
         const darkLayer = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
             attribution: '&copy; OpenStreetMap contributors &copy; CARTO'
         });
@@ -446,8 +437,8 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
         visibleMarkers.addTo(mapInstance);
-        
-        setupDynamicDateFilter(); 
+
+        setupDynamicDateFilter();
         setupCarouselButtons();
         setupTimeFilterButtons();
         setupCategoryFilterButtons();
@@ -457,20 +448,19 @@ document.addEventListener('DOMContentLoaded', function () {
             L.marker(coords, { icon: userIcon }).addTo(mapInstance)
                 .bindTooltip('Estás aquí', { permanent: true, direction: 'top', offset: [0, -15], className: 'permanent-label' }).openTooltip();
         }
-        
+
         mapInstance.addControl(new L.Control.Fullscreen());
     }
 
     function irAlBannerDeUbicacion() {
-        if (loaderContainer.style.display === 'none') return; 
-        
+        if (loaderContainer.style.display === 'none') return;
+
         loaderContainer.style.display = 'none';
         welcomeBanner.style.display = 'flex';
     }
 
     // --- Ejecución e Inicialización ---
 
-    // ⬇️ SE LLAMA A LA NUEVA FUNCIÓN DE PRECARGA AQUÍ ⬇️
     preloadDataImages();
 
     introVideo.addEventListener('ended', irAlBannerDeUbicacion);
