@@ -240,12 +240,18 @@ body {
 .pre-map-image-container {
     text-align: center; margin: 0 auto 1.5rem auto; padding: 0 1rem; max-width: 600px;
 }
+.pre-map-image-container a {
+    display: block; transition: transform 0.2s ease;
+}
+.pre-map-image-container a:hover {
+    transform: scale(1.02);
+}
 .pre-map-image {
     width: 100%; height: auto; border-radius: 12px;
     border: 2px solid var(--color-acento-principal);
     box-shadow: 0 0 20px rgba(152, 201, 60, 0.3); display: block;
+    margin-bottom: 1rem;
 }
-.pre-map-image:not(:last-child) { margin-bottom: 1rem; }
 
 /* --- POPUP DE EVENTOS --- */
 .event-popup-content {
@@ -263,15 +269,36 @@ body {
     font-size: 1.1rem; text-shadow: 1px 1px 0 var(--color-acento-sombra);
 }
 .event-popup-content p {
-    margin: 0 0 8px 0; padding-bottom: 5px; border-bottom: 1px solid #eee;
+    margin: 0 0 8px 0; padding-bottom: 8px; border-bottom: 1px solid #eee;
 }
 .event-popup-content p:last-child { border-bottom: none; }
 .event-popup-content strong { color: var(--color-texto-oscuro); }
 .event-popup-content span { color: #555; }
+
+.popup-register-btn {
+    display: inline-block;
+    margin-top: 5px;
+    padding: 5px 12px;
+    background-color: var(--color-acento-principal); /* AHORA SIEMPRE VERDE */
+    color: var(--color-texto-claro) !important;
+    text-decoration: none;
+    font-size: 0.85rem;
+    border-radius: 20px;
+    font-weight: bold;
+    transition: all 0.2s ease;
+    border: none;
+    box-shadow: 1px 1px 0px var(--color-acento-sombra);
+}
+.popup-register-btn:hover {
+    transform: scale(1.05) translate(1px, 1px);
+    box-shadow: none;
+    filter: brightness(1.1);
+}
+
 .cronograma-btn {
-    display: block; margin-top: 15px; padding: 10px;
+    display: inline-block; margin-top: 15px; padding: 10px 20px;
     background-color: var(--color-acento-principal); color: var(--color-texto-claro);
-    text-align: center; text-decoration: none; font-weight: bold; font-size: 0.9rem;
+    text-align: center; text-decoration: none; font-weight: bold; font-size: 1rem;
     border-radius: 8px; transition: all 0.1s ease;
     box-shadow: 2px 2px 0px var(--color-acento-sombra);
 }
@@ -299,28 +326,15 @@ body {
 
 /* --- FOOTER (FIRMA) --- */
 .main-footer {
-    text-align: center;
-    margin-top: 2rem;
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem; /* Añadido para dar espacio en la parte inferior */
-    /* Removido el border-top porque el fondo amarillo ya da el contraste */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    text-align: center; margin-top: 2rem; padding-top: 1.5rem; padding-bottom: 1.5rem;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
 }
 .footer-logo {
-    height: 60px; /* Ajusta este valor según el tamaño de tu logo */
-    width: auto;
-    margin-bottom: 10px;
-    filter: brightness(0) invert(1); /* Hace que el logo blanco se vea blanco sobre fondo amarillo */
+    height: 60px; width: auto; margin-bottom: 10px; filter: brightness(0) invert(1);
 }
 .main-footer p {
-    margin: 0;
-    color: var(--color-texto-claro); /* Texto blanco para contraste con el amarillo */
-    font-size: 0.9rem;
-    line-height: 1.4;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.3); /* Ligera sombra para mejorar legibilidad */
+    margin: 0; color: var(--color-texto-claro); font-size: 0.9rem;
+    line-height: 1.4; text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
 }
 
 /* --- RESPONSIVE --- */
