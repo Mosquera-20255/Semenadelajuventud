@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded', function () {
         },
         {
             lat: 4.714190, lng: -74.217849, location: 'Lote Zapatoca',
-            name: 'MEGAFEST', time: '11:00 a.m. a 9:00 p.m.',
+            name: 'SUPERFEST', time: '11:00 a.m. a 9:00 p.m.',
             date: '2025-11-15', category: 'cultura', img: 'icono_concierto.png'
         },
         // --- Domingo, 16 de Noviembre ---
@@ -482,3 +482,4 @@ document.addEventListener('DOMContentLoaded', function () {
         inicializarMapa(defaultCoords, false);
     });
 });
+
